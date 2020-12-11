@@ -2,19 +2,15 @@ import sys
 
 def part1(program):
     current = 0
-    ending = max(program) + 3
+    all_adapters = sorted(program)
+    ending = all_adapters[-1] + 3
     differences = []
-    while current != ending:
-        adapters = [x for x in program if current < x <= current + 3]
-        if len(adapters) == 0:
-            return None
-        
-        adapter = min(adapters)
+    
+    for adapter in all_adapters:
         differences.append(adapter - current)
         current += (adapter - current)
-        if ending - current <= 3:
-            differences.append(ending - current)
-            current = ending
+            
+    differences.append(ending - current)
 
     return sum([1 for x in differences if x == 1]) * sum([1 for x in differences if x == 3])
 
