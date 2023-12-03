@@ -18,7 +18,8 @@ text_cases = [
     ("7pqrstsixteen", 76),
     ("pkdrhksqdhrvhg5", 55),
     ("ninebfour26fivetwonem", 91),
-    ("oneight", 18)
+    ("oneight", 18),
+    ("nineight", 98)
 ]
 
 
