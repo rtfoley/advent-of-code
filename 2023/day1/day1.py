@@ -18,6 +18,7 @@ numbers = {
 # this is not an elegant solution, but it works
 doubles = {
     "twone": 21,
+    "oneight": 18,
     "threeight": 38,
     "fiveight": 58,
     "eightwo": 82,
@@ -40,8 +41,8 @@ def extract_value_with_text(line):
     pattern = r"(?=(\d|one|two|three|four|five|six|seven|eight|nine|zero))"
     for double in doubles:
         line = re.sub(double, str(doubles[double]), line)
+
     values = re.findall(pattern, line)
-    print(values)
     first = extract_number(values[0])
     last = extract_number(values[-1])
     return (first*10)+last

@@ -17,7 +17,8 @@ text_cases = [
     ("zoneight234", 14),
     ("7pqrstsixteen", 76),
     ("pkdrhksqdhrvhg5", 55),
-    ("ninebfour26fivetwonem", 91)
+    ("ninebfour26fivetwonem", 91),
+    ("oneight", 18)
 ]
 
 
