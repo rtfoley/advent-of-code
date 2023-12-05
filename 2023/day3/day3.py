@@ -21,8 +21,18 @@ def get_part_numbers(lines):
     for row, line in enumerate(lines):
         number = 0
         is_marked = False
+
+        # iterate over each character in the line
         for column, value in enumerate(line):
-            if not value in string.digits:
+            # save off the digit if one is present
+            if value in string.digits:
+                number = int(value) if number == 0 else (number * 10) + int(value)
+
+            # check for end-of-number conditions
+            # we can skip checking for marks in the last column, since any mark in the last column
+            # would be diagonal to anything in the 2nd-to-last column
+            if value not in string.digits or column == col_count - 1:
+                # if we have digits saved, save off the completed number if it is marked, and then reset
                 if number > 0:
                     if is_marked:
                         numbers.append(number)
@@ -32,19 +42,11 @@ def get_part_numbers(lines):
 
                 continue
 
-            number = int(value) if number == 0 else (number * 10) + int(value)
-
-            # finished a number at the end of the row, save if marked
-            if column == col_count - 1:
-                if is_marked:
-                    numbers.append(number)
-                    is_marked = False
-
-                number = 0
-
+            # no need to run checks if we've already found it
             if is_marked:
                 continue
 
+            # check all neighboring cells for a mark
             for check in checks:
                 # verify check address is in bounds
                 check_row = row + check[0]
